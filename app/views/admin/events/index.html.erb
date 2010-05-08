@@ -1,0 +1,36 @@
+<div id='actions'>
+  <ul>
+    <li>
+      <%= render :partial => "/shared/admin/search", :locals => {:url => admin_events_url} %>
+    </li>
+    <li>
+      <%= link_to "Create New Event", new_admin_event_url, :class => "add_icon" %>
+    </li>
+  </ul>
+</div>
+<div id='records'>
+  <% if searching? %>
+    <h2>Search Results for "<%= params[:search] %>"</h2>
+    <% if @events.any? %>
+      <%= render :partial => "event", :collection => @events %>
+    <% else %>
+      <p>Sorry, no results found.</p>
+    <% end %>
+  <% else %>
+    <% if @events.any? %>
+      <%= will_paginate @events, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+       <ul id='sortable_list'>
+        <%= render :partial => "sortable_list" %>
+       </ul>
+      <%= will_paginate @events, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <% else %>
+      <p>
+        <strong>
+          There are no events yet.
+          Click "Create New Event" to add your first event.
+        </strong>
+      </p>
+    <% end %>
+  <% end %>
+</div>
+<%= render :partial => "/shared/admin/make_sortable", :locals => {:tree => false } if !searching? and Event.count > 1 %>

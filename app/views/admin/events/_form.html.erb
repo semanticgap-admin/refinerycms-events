@@ -1,0 +1,41 @@
+<% content_for :head, stylesheet_link_tag('semanticgap_date_time_form') %>
+<%= error_messages_for :event -%>
+<% form_for [:admin, @event] do |f| -%>
+  
+  <div class='field'>
+    <%= f.label :title -%>
+    <%= f.text_field :title, :class => 'larger' -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :description -%>
+    <%= f.text_area :description, :rows => 20, :cols => 140, :class => 'wymeditor' -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :location -%>
+    <%= f.text_field :location -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :all_day -%>
+    <%= f.check_box :all_day -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :start_at -%>
+    <%= f.datetime_form :start_at -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :end_at -%>
+    <%= f.datetime_form :end_at -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :color -%>
+    <%= f.text_field :color -%>
+  </div>
+  
+  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false} %>
+<% end -%>

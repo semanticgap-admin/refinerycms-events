@@ -1,0 +1,30 @@
+<% content_for :body_content_title do %>
+  <%= @event.title %>
+<% end %>
+
+<% content_for :body_content_left do %>
+  <div>
+    <%= @event.description %>
+  </div>
+  
+  <div>
+    <h3>Where</h3>
+    <%= @event.location %>
+  </div>
+  
+  <div>
+    <h3>When</h3>
+    <% if @event.all_day? -%>
+      <% if @event.days == 0 -%>
+        <%= date(@event.start_at) %>
+     <% else -%>
+      <%= date(@event.start_at) %> &mdash; <%= date(@event.end_at) %>
+     <% end -%>
+    <% else -%>
+      <%= datetime(@event.start_at) %> &mdash; <%= datetime(@event.end_at) %>
+    <% end -%>
+  </div>
+  
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

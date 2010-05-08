@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
   s.name = "refinerycms-events"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.authors = ["SemanticGap"]
   s.date = "2010-05-07"
   s.default_executable = "refinerycms-events-install"
   s.description = "A really straightforward open source Ruby on Rails events plugin designed for integration with RefineryCMS."
   s.email = "info@semanticgap.com"
-  s.add_dependency "nayutaya-active-form"
+  s.add_dependency "semanticgap_date_time_form"
   s.add_dependency "elevation_event_calendar"
   s.executables = ["refinerycms-events-install"]
   s.files = [ "db/migrate/20100430163757_create_events.rb",

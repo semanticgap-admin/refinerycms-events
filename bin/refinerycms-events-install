@@ -21,6 +21,8 @@ if rails_root.exist?
     {:from => %w(db migrate), :to => %w(db migrate), :filename => "20100430163757_create_events.rb"},
     {:from => %w(db migrate),:to => %w(db migrate), :filename => "20100501234548_add_color_to_events.rb"},
     {:from => %w(db migrate),:to => %w(db migrate), :filename => "20100502004451_add_all_day_to_events.rb"},
+    {:from => %w(public javascripts),:to => %w(public javascripts), :filename => "event_calendar.js"},
+    {:from => %w(public stylesheets),:to => %w(public stylesheets), :filename => "event_calendar.css"},
   ]
   copies.each do |copy|
     copy_from = events_root.join(copy[:from].join(File::SEPARATOR), copy[:filename])

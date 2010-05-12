@@ -1,20 +1,23 @@
-<dl class="event-list">
-  <% event_list.each do |d, events| -%>
-  <dt><%= date(d) %></dt>
-  <dd>
-    <ul>
-      <% events.each do |e| -%>
-      <li class="event">
-	<%= link_to(event_title(e), event_path(e)) %>
-	<% unless e.location.blank? -%>
-	@ <%= h(e.location) %>
-	<% end -%>
-      </li>
+<% unless event_list.blank? -%>
+  <%= content_tag('h1', heading) if heading %>
+  <dl class="event-list">
+    <% event_list.each do |d, events| -%>
+    <dt><%= date(d) %></dt>
+    <dd>
+      <ul>
+        <% events.each do |e| -%>
+        <li class="event">
+	  <%= link_to(event_title(e), event_path(e)) %>
+  	  <% unless e.location.blank? -%>
+  	    @ <%= h(e.location) %>
+  	  <% end -%>
+        </li>
+        <% end -%>
+      </ul>
       <% end -%>
-    </ul>
-    <% end -%>
-  </dd>
-  <dt>
-    <%= link_to 'View the calendar', events_path %>
-  </dt>
-</dl>
+    </dd>
+    <dt>
+      <%= link_to(see_more_link, events_path) %>
+    </dt>
+  </dl>
+<% end -%>

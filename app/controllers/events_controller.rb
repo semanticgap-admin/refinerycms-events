@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
 
   before_filter :find_page
-  helper :calendars
 
   def index
     @date = Date.parse(params[:date]) rescue Date.today

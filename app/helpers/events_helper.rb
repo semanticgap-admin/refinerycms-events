@@ -1,4 +1,4 @@
-module CalendarsHelper
+module EventsHelper
   def datetime(d)
     I18n.localize(d, :format => "%B %d, %Y %l:%M %p")
   end
@@ -49,11 +49,15 @@ module CalendarsHelper
     end
   end
 
-  def event_list
+  def event_list(options = Hash.new)
     grouped_events = Event.
-      all(:limit => 10, :order => 'start_at ASC',
-          :conditions => [ 'start_at >= ?', Time.now ]).
+      all(:limit => options.fetch(:limit) { 10 }, :order => 'start_at ASC',
+          :conditions => [ 'start_at >= ? || end_at >= ?', Time.now, Time.now ]).
       group_by { |e| e.start_at.to_date }
-    render :partial => '/events/event_list', :object => grouped_events
+
+    render(:partial => '/events/event_list',
+           :object => grouped_events,
+           :locals => { :heading => options[:heading],
+                        :see_more_link => options.fetch(:see_more_link) { 'View the calendar' } } )
   end
 end

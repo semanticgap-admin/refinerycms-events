@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "refinerycms-events"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.authors = ["SemanticGap"]
   s.date = "2010-05-07"
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
               "app/models/event.rb",
               "app/controllers/events_controller.rb",
               "app/controllers/admin/events_controller.rb",
-              "app/helpers/calendars_helper.rb",
+              "app/helpers/events_helper.rb",
               "app/views/events/index.html.erb",
               "app/views/events/show.html.erb",
               "app/views/events/_event_list.html.erb",

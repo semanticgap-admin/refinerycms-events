@@ -52,7 +52,7 @@ module EventsHelper
   def event_list(options = Hash.new)
     grouped_events = Event.
       all(:limit => options.fetch(:limit) { 10 }, :order => 'start_at ASC',
-          :conditions => [ 'start_at >= ? || end_at >= ?', Time.now, Time.now ]).
+          :conditions => [ 'start_at >= ? OR end_at >= ?', Time.now, Time.now ]).
       group_by { |e| e.start_at.to_date }
 
     render(:partial => '/events/event_list',

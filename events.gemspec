@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "refinerycms-events"
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.authors = ["SemanticGap"]
   s.date = "2010-05-07"
